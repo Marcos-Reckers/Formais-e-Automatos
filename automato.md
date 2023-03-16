@@ -1,0 +1,25 @@
+mlkr33
+
+12345678
+integral
+frango
+alface
+bbq
+coca
+12345566544462089905890
+9843
+entrega
+
+
+INSERIR USUARIO (MAIS Q 5 letras menos q 20)
+SENHA (8 numeros)
+ESCOLHER O PÂO - 3 OPÇÔES
+RECHEIO  - 4 OPÇÔES
+SALADA  -  3 OPÇÔES
+MOLHO  - 3 OPÇÔES
+BEBIDA  - 3 OPÇÔES
+NUMERO DO CARTÂO (12 numeros )
+SENHA DO CARTÂO (4 numeros)
+FORMA ENTREGA  - 2 OPÇÔES
+
+(SSSSSSSS)(I+F+A)(F,C,P,V)(A,T,S)(M,K,B)(A,C,G)(CCCCCCCCCCCC)(XXXX)(B+E)
