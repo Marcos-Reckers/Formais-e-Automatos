@@ -1,4 +1,3 @@
-import os
 class Pedido:
     def __init__(self):
         self.usuario = None
