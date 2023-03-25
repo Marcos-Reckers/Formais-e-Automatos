@@ -1,0 +1,12 @@
+user
+1234
+Frango
+Não
+Alface
+Maionese
+Não
+Suco
+Não
+Entrega
+1234567890123456
+3456

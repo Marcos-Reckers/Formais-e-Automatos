@@ -1,16 +1,29 @@
-from lib.estados import estado_inicial
-def escolher_interacao(pedido):
-    print("Escolha o modo de interacao:")
-    print("Real")
-    print("Automatica")
-    interacao = input("Digite o modo de interacao: ")
-    pedido.interacao = interacao
+from lib.estados import *
+from lib.auxiliar import *
 
-    if interacao == "Automatica":
+def escolher_interacao(pedido):
+    print("Escolha o modo de interacao:\n")
+    print("Real")
+    print("Automatico")
+    pedido.interacao = input("\nDigite o modo de interacao: ")
+
+    if pedido.interacao == "Automatico":
         nome_arquivo = input("Digite o nome do arquivo: ")
         arquivo = open(nome_arquivo, 'r')
         for line in arquivo.readlines():
             pedido.entradas_arquivo.append(line.strip())
         arquivo.close()
+        print(pedido.entradas_arquivo)
+        print(len(pedido.entradas_arquivo))
+        print(pedido.indice)
+        clear()
+        return estado_inicial(pedido)
 
-    return estado_inicial(pedido)
+    elif pedido.interacao == "Real":
+        clear()
+        return estado_inicial(pedido)
+
+    else:
+        clear()
+        print("Interacao invalida\n\n")
+        return escolher_interacao(pedido)
