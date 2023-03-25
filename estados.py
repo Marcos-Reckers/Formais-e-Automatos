@@ -167,7 +167,7 @@ def qual_bebida(pedido):
 
 def confirmacao_pedido(pedido):
     print("Seu pedido foi registrado com sucesso\n\n")
-    # print("Fazer outro pedido") #todo
+    print("Novo pedido\n")
     print("Qual a forma de entrega?\n")
     print("Retirar no balcão")
     print("Entrega")
@@ -178,6 +178,10 @@ def confirmacao_pedido(pedido):
     if entrega == "Voltar a editar o pedido":
         clear()
         return qual_bebida(pedido)
+
+    elif entrega == "Novo pedido":
+        clear()
+        return qual_recheio(pedido)
     
     elif not entrega in ["Retirar no balcão", "Entrega"]:
         clear()
