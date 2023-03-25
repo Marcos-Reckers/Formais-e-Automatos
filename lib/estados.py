@@ -1,200 +1,243 @@
 from lib.auxiliar import *
 
 def estado_inicial(pedido):
-    print("Bem vindo ao sistema de pedidos")
-    pedido.usuario = input("Digite seu nome de usuário: ")
+    if pedido.interacao == "Automatico":
+        pedido.usuario = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
+
+    else:
+        print("Bem vindo ao sistema de pedidos")
+        pedido.usuario = input("Digite seu nome de usuário: ")
+
     return senha_inicial(pedido)
 
 def senha_inicial(pedido):
-    pedido.senha = input("Digite sua senha: ")
-    clear()
+    if pedido.interacao == "Automatico":
+        pedido.senha = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
+    else:
+        pedido.senha = input("Digite sua senha: ")
+        clear()
     return qual_recheio(pedido)
 
-
 def qual_recheio(pedido):
-    print("Escolha o recheio do seu sanduíche:\n")
-    print("Frango")
-    print("Carne")
-    print("Vegetariano")
-    print("\nVoltar")
+    if pedido.interacao == "Automatico":
+        pedido.recheio = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
 
-    recheio = input("\nDigite o recheio: ")
+    else:
+        print("Escolha o recheio do seu sanduíche:\n")
+        print("Frango")
+        print("Carne")
+        print("Vegetariano")
+        print("\nVoltar")
+        pedido.recheio = input("\nDigite o recheio: ")
 
-    if recheio == "Voltar":
+    if pedido.recheio == "Voltar":
         clear()
         return estado_inicial(pedido)
     
-    elif not recheio in ["Frango", "Carne", "Vegetariano"]:
+    elif not pedido.recheio in ["Frango", "Carne", "Vegetariano"]:
         clear()
         print("Recheio inválido\n\n")
         return estado_inicial(pedido)
     
     else :
         clear()
-        pedido.recheio = recheio
         return adicional1(pedido)
 
-def adicional1(pedido):
-    print('Deseja adicional de recheio?\n')
-    print('Sim')
-    print('Não')
+def adicional1(pedido): 
+    if pedido.interacao == "Automatico":
+        pedido.adicional1 = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
 
-    esolha = input('\nSelecione uma opção: ')
+    else:
+        print('Deseja adicional de recheio?\n')
+        print('Sim')
+        print('Não')
+        pedido.adicional1 = input('\nSelecione uma opção: ')
 
-    if esolha == 'Sim':
+    if pedido.adicional1 == 'Sim':
         clear()
         return adicional_recheio(pedido)
-    elif esolha == 'Não':
+
+    elif pedido.adicional1 == 'Não':
         clear()
         return qual_salada(pedido)
+
     else:
         clear()
         print('Opção inválida')
         return estado_inicial(pedido)
 
 def adicional_recheio(pedido):
-    print("Escolha o recheio adicional do seu sanduíche:\n")
-    print("Frango")
-    print("Carne")
-    print("Vegetariano")
-    print("Cancelar adicional")
+    if pedido.interacao == "Automatico":
+        pedido.recheio_adicional = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
 
-    recheio_adicional = input("\nDigite o recheio: ")
+    else:
+        print("Escolha o recheio adicional do seu sanduíche:\n")
+        print("Frango")
+        print("Carne")
+        print("Vegetariano")
+        print("Cancelar adicional")
+        pedido.recheio_adicional = input("\nDigite o recheio: ")
 
-    if recheio_adicional == "Cancelar adicional":
+    if pedido.recheio_adicional == "Cancelar adicional":
         clear()
         return qual_salada(pedido)
     
-    elif not recheio_adicional in ["Frango", "Carne", "Vegetariano"]:
+    elif not pedido.recheio_adicional in ["Frango", "Carne", "Vegetariano"]:
         clear()
         print("Recheio adicional inválido\n\n")
         return estado_inicial(pedido)
     
     else :
         clear()
-        pedido.recheio_adicional = recheio_adicional
         return qual_salada(pedido)
 
 def qual_salada(pedido):
-    print("Escolha a salada do seu sanduíche:\n")
-    print("Alface")
-    print("Tomate")
-    print("Cenoura")
-    print("Sem salada")
-    print("\nVoltar")
+    if pedido.interacao == "Automatico":
+        pedido.salada = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
 
-    salada = input("Digite a salada: ")
+    else:
+        print("Escolha a salada do seu sanduíche:\n")
+        print("Alface")
+        print("Tomate")
+        print("Cenoura")
+        print("Sem salada")
+        print("\nVoltar")
+        pedido.salada = input("Digite a salada: ")
 
-    if salada == "Voltar":
+    if pedido.salada == "Voltar":
         clear()
         return qual_recheio(pedido)
     
-    elif not salada in ["Alface", "Tomate", "Cenoura", "Sem salada"]:
+    elif not pedido.salada in ["Alface", "Tomate", "Cenoura", "Sem salada"]:
         clear()
         print("Salada inválida")
         return estado_inicial(pedido)
     
     else :
         clear()
-        pedido.salada = salada
         return qual_molho(pedido)
 
 def qual_molho(pedido):
-    print("Escolha o molho do seu sanduíche:\n")
-    print("Maionese")
-    print("Ketchup")
-    print("Mostarda")
-    print("Sem molho")
-    print("\nVoltar")
+    if pedido.interacao == "Automatico":
+        pedido.molho = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
 
-    molho = input("Digite o molho: ")
+    else:
+        print("Escolha o molho do seu sanduíche:\n")
+        print("Maionese")
+        print("Ketchup")
+        print("Mostarda")
+        print("Sem molho")
+        print("\nVoltar")
+        pedido.molho = input("Digite o molho: ")
 
-    if molho == "Voltar":
+    if pedido.molho == "Voltar":
         clear()
         return qual_salada(pedido)
     
-    elif not molho in ["Maionese", "Ketchup", "Mostarda", "Sem molho"]:
+    elif not pedido.molho in ["Maionese", "Ketchup", "Mostarda", "Sem molho"]:
         clear()
         print("Molho inválido\n\n")
         return estado_inicial(pedido)
     
     else :
         clear()
-        pedido.molho = molho
         return adicional2(pedido)
 
 def adicional2(pedido):
-    print('Deseja adicional de molho?\n')
-    print('Sim')
-    print('Não')
+    if pedido.interacao == "Automatico":
+        opção = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
 
-    opção = input('Selecione uma opção: ')
+    else:
+        print('Deseja adicional de molho?\n')
+        print('Sim')
+        print('Não')
+        pedido.adicional2 = input('Selecione uma opção: ')
 
-    if opção == 'Sim':
+    if pedido.adicional2 == 'Sim':
         clear()
         return adicional_molho(pedido)
-    elif opção == 'Não':
+
+    elif pedido.adicional2 == 'Não':
         clear()
         return qual_bebida(pedido)
+
     else:
         clear()
         print('Opção inválida')
         return estado_inicial(pedido)
 
 def adicional_molho(pedido):
-    print("Escolha o molho adicional do seu sanduíche:\n")
-    print("Maionese")
-    print("Ketchup")
-    print("Mostarda")
-    print("Cancelar adicional")
+    if pedido.interacao == "Automatico":
+        pedido.molho_adicional = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
 
-    molho_adicional = input("Digite o molho: ")
+    else:
+        print("Escolha o molho adicional do seu sanduíche:\n")
+        print("Maionese")
+        print("Ketchup")
+        print("Mostarda")
+        print("Cancelar adicional")
+        pedido.molho_adicional = input("Digite o molho: ")
 
-    if molho_adicional == "Cancelar adicional":
+    if pedido.molho_adicional == "Cancelar adicional":
         clear()
         return qual_bebida(pedido)
     
-    elif not molho_adicional in ["Maionese", "Ketchup", "Mostarda"]:
+    elif not pedido.molho_adicional in ["Maionese", "Ketchup", "Mostarda"]:
         clear()
         print("Molho adicional inválido\n\n")
         return estado_inicial(pedido)
     
     else :
         clear()
-        pedido.molho_adicional = molho_adicional
-        return pedido.molho_adicional
+        return qual_bebida(pedido)
 
 def qual_bebida(pedido):
-    print("Escolha a bebida do seu sanduíche:\n")
-    print("Refrigerante")
-    print("Suco")
-    print("Água")
-    print("\nVoltar")
+    if pedido.interacao == "Automatico":
+        pedido.bebida = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
 
-    bebida = input("Digite a bebida: ")
+    else:
+        print("Escolha a bebida do seu sanduíche:\n")
+        print("Refrigerante")
+        print("Suco")
+        print("Água")
+        print("\nVoltar")
+        pedido.bebida = input("Digite a bebida: ")
 
-    if bebida == "Voltar":
+    if pedido.bebida == "Voltar":
         clear()
         return qual_molho(pedido)
     
-    elif not bebida in ["Refrigerante", "Suco", "Água"]:
+    elif not pedido.bebida in ["Refrigerante", "Suco", "Água"]:
         clear()
         print("Bebida inválida")
         return estado_inicial(pedido)
     
-    else :
+    else:
         clear()
-        pedido.bebida = bebida
         return confirmacao_pedido(pedido)
 
 def confirmacao_pedido(pedido):
-    print("Seu pedido foi registrado com sucesso\n\n")
-    print("Deseja adicionar mais um pedido?\n")
-    print("Sim")
-    print("Não")
-    print("\nVoltar a editar o pedido")
+    if pedido.interacao == "Automatico":
+        novo_pedido = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
 
-    novo_pedido = input("\nDigite a opção: ")
+    else:
+        print("Seu pedido foi registrado com sucesso\n\n")
+        print("Deseja adicionar mais um pedido?\n")
+        print("Sim")
+        print("Não")
+        print("\nVoltar a editar o pedido")
+        novo_pedido = input("\nDigite a opção: ")
 
     if novo_pedido == "Voltar a editar o pedido":
         clear()
@@ -202,52 +245,72 @@ def confirmacao_pedido(pedido):
 
     elif novo_pedido == "Sim":
         clear()
-        return qual_recheio(pedido)
-    
+        return qual_recheio(pedido)    
+
     elif novo_pedido == "Não":
         clear()
         return entrega(pedido)
-    
+
     else:
         clear()
         print("Opção inválida\n\n")
         return estado_inicial(pedido)
 
 def entrega(pedido):
-    print("Qual a forma de entrega?\n")
-    print("Retirar no balcão")
-    print("Entrega")
-    print("\nVoltar a editar o pedido")
+    if pedido.interacao == "Automatico":
+        pedido.entrega = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
 
-    entrega = input("\nDigite a opção: ")
+    else:
+        print("Qual a forma de entrega?\n")
+        print("Retirar no balcão")
+        print("Entrega")
+        print("\nVoltar a editar o pedido")
+        pedido.forma_entrega = input("\nDigite a opção: ")
 
-    if entrega == "Voltar a editar o pedido":
+    if pedido.forma_entrega == "Voltar a editar o pedido":
         clear()
-        return confirmacao_pedido(pedido)
-    
-    if not entrega in ["Retirar no balcão", "Entrega"]:
+        return confirmacao_pedido(pedido)    
+
+    if not pedido.forma_entrega in ["Retirar no balcão", "Entrega"]:
         clear()
         print("Opção inválida\n\n")
         return estado_inicial(pedido)
-    
+
     else:
         clear()
         pedido.entrega = entrega
         return pagamento(pedido)
 
 def pagamento(pedido):
-    pedido.cartão = input("Digite o número do cartão: ")
-    if len(pedido.cartão) != 16:
+    if pedido.interacao == "Automatico":
+        pedido.cartao = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
+
+    else:
+        pedido.cartao = input("Digite o número do cartão: ")
+        
+
+    if len(pedido.cartao) != 16:
         clear()
         print("Número de cartão inválido\n\n")
         return pagamento(pedido)
+
     else:
         clear()
-        pedido.senha_cartao = pedido.cartão[-4:]
+        pedido.senha_cartao = pedido.cartao[-4:]
         return senha_cartao(pedido)
 
 def senha_cartao(pedido):
-    senha = input("Digite a senha do cartão: ")
+    
+    if pedido.interacao == "Automatico":
+        senha = pedido.entradas_arquivo[pedido.indice]
+        pedido.indice = pedido.indice + 1
+
+    else:
+        senha = input("Digite a senha do cartão: ")
+        
+
     if senha == pedido.senha_cartao:
         clear()
         return imprime(pedido)
@@ -262,4 +325,4 @@ def senha_cartao(pedido):
             tentativas += 1
         clear()
         print("Número de tentativas excedido")
-        return estado_inicial(pedido)
+        return estado_inicial(pedido)    

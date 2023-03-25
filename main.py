@@ -1,13 +1,12 @@
 from lib.pedido import *
 from lib.estados import *
+from lib.interacao import *
 
 def main():
     
     meupedido = Pedido()
-    meupedido.senha_cartao = "1234"
-
     clear()
-    estado_inicial(meupedido)
+    escolher_interacao(meupedido)
 
 if __name__ == "__main__":
     main()
