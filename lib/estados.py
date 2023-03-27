@@ -54,14 +54,14 @@ def adicional1(pedido):
     else:
         print('Deseja adicional de recheio?\n')
         print('Sim')
-        print('Não')
+        print('Nao')
         pedido.adicional1 = input('\nSelecione uma opção: ')
 
     if pedido.adicional1 == 'Sim':
         clear()
         return adicional_recheio(pedido)
 
-    elif pedido.adicional1 == 'Não':
+    elif pedido.adicional1 == 'Nao':
         clear()
         return qual_salada(pedido)
 
@@ -158,14 +158,14 @@ def adicional2(pedido):
     else:
         print('Deseja adicional de molho?\n')
         print('Sim')
-        print('Não')
+        print('Nao')
         pedido.adicional2 = input('Selecione uma opção: ')
 
     if pedido.adicional2 == 'Sim':
         clear()
         return adicional_molho(pedido)
 
-    elif pedido.adicional2 == 'Não':
+    elif pedido.adicional2 == 'Nao':
         clear()
         return qual_bebida(pedido)
 
@@ -235,7 +235,7 @@ def confirmacao_pedido(pedido):
         print("Seu pedido foi registrado com sucesso\n\n")
         print("Deseja adicionar mais um pedido?\n")
         print("Sim")
-        print("Não")
+        print("Nao")
         print("\nVoltar a editar o pedido")
         novo_pedido = input("\nDigite a opção: ")
 
@@ -247,7 +247,7 @@ def confirmacao_pedido(pedido):
         clear()
         return qual_recheio(pedido)    
 
-    elif novo_pedido == "Não":
+    elif novo_pedido == "Nao":
         clear()
         return entrega(pedido)
 

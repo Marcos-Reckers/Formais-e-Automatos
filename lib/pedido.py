@@ -1,18 +1,20 @@
+from dataclasses import dataclass, field
+
+@dataclass
 class Pedido:
-    def __init__(self):
-        self.usuario = None
-        self.senha = None
-        self.recheio = None
-        self.adicional1 = None
-        self.recheio_adicional = None
-        self.salada = None
-        self.molho = None
-        self.adicional2 = None
-        self.molho_adicional = None
-        self.bebida = None
-        self.forma_entrega = None
-        self.cartao = None
-        self.senha_cartao = None
-        self.interacao = None
-        self.entradas_arquivo = []
-        self.indice = 0
+    usuario:str = None
+    senha:str = None
+    recheio:str = None
+    adicional1:str = None
+    recheio_adicional:str = None
+    salada:str = None
+    molho:str = None
+    adicional2:str = None
+    molho_adicional:str = None
+    bebida:str = None
+    forma_entrega:str = None
+    cartao:str = None
+    senha_cartao:str = None
+    interacao:str = None
+    entradas_arquivo:list = field(default_factory=list)
+    indice:int = 0

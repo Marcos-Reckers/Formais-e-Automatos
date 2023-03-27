@@ -1,12 +1,12 @@
 user
 1234
 Frango
-Não
+Nao
 Alface
 Maionese
-Não
+Nao
 Suco
-Não
+Nao
 Entrega
 1234567890123456
 3456

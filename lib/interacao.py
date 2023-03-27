@@ -9,10 +9,9 @@ def escolher_interacao(pedido):
 
     if pedido.interacao == "Automatico":
         nome_arquivo = input("Digite o nome do arquivo: ")
-        arquivo = open(nome_arquivo, 'r')
-        for line in arquivo.readlines():
-            pedido.entradas_arquivo.append(line.strip())
-        arquivo.close()
+        with open(nome_arquivo, "r") as arquivo:
+            for line in arquivo.readlines():
+                pedido.entradas_arquivo.append(line.strip())
         print(pedido.entradas_arquivo)
         print(len(pedido.entradas_arquivo))
         print(pedido.indice)
