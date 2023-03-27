@@ -152,7 +152,7 @@ def qual_molho(pedido):
 
 def adicional2(pedido):
     if pedido.interacao == "Automatico":
-        opção = pedido.entradas_arquivo[pedido.indice]
+        pedido.adicional2 = pedido.entradas_arquivo[pedido.indice]
         pedido.indice = pedido.indice + 1
 
     else:
@@ -258,7 +258,7 @@ def confirmacao_pedido(pedido):
 
 def entrega(pedido):
     if pedido.interacao == "Automatico":
-        pedido.entrega = pedido.entradas_arquivo[pedido.indice]
+        pedido.forma_entrega = pedido.entradas_arquivo[pedido.indice]
         pedido.indice = pedido.indice + 1
 
     else:
@@ -279,7 +279,6 @@ def entrega(pedido):
 
     else:
         clear()
-        pedido.entrega = entrega
         return pagamento(pedido)
 
 def pagamento(pedido):
