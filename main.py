@@ -67,10 +67,7 @@ def qual_recheio(pedido):
     elif not pedido.recheio in ["Frango", "Carne", "Vegetariano"]:
         clear()
         print("Recheio inválido\n\n")
-        if pedido.interacao == "Automatico":
-            return escolher_interacao(pedido)
-        else:
-            return estado_inicial(pedido)
+        return escolher_interacao(pedido)
     
     else :
         clear()
@@ -98,10 +95,7 @@ def adicional1(pedido):
     else:
         clear()
         print('Opção inválida')
-        if pedido.interacao == "Automatico":
-            return escolher_interacao(pedido)
-        else:
-            return estado_inicial(pedido)
+        return escolher_interacao(pedido)
 
 def adicional_recheio(pedido):
     if pedido.interacao == "Automatico":
@@ -123,10 +117,7 @@ def adicional_recheio(pedido):
     elif not pedido.recheio_adicional in ["Frango", "Carne", "Vegetariano"]:
         clear()
         print("Recheio adicional inválido\n\n")
-        if pedido.interacao == "Automatico":
-            return escolher_interacao(pedido)
-        else:
-            return estado_inicial(pedido)
+        return escolher_interacao(pedido)
     
     else :
         clear()
@@ -153,10 +144,7 @@ def qual_salada(pedido):
     elif not pedido.salada in ["Alface", "Tomate", "Cenoura", "Sem salada"]:
         clear()
         print("Salada inválida")
-        if pedido.interacao == "Automatico":
-            return escolher_interacao(pedido)
-        else:
-            return estado_inicial(pedido)
+        return escolher_interacao(pedido)
     
     else :
         clear()
@@ -183,10 +171,7 @@ def qual_molho(pedido):
     elif not pedido.molho in ["Maionese", "Ketchup", "Mostarda", "Sem molho"]:
         clear()
         print("Molho inválido\n\n")
-        if pedido.interacao == "Automatico":
-            return escolher_interacao(pedido)
-        else:
-            return estado_inicial(pedido)
+        return escolher_interacao(pedido)
     
     else :
         clear()
@@ -214,10 +199,7 @@ def adicional2(pedido):
     else:
         clear()
         print('Opção inválida')
-        if pedido.interacao == "Automatico":
-            return escolher_interacao(pedido)
-        else:
-            return estado_inicial(pedido)
+        return escolher_interacao(pedido)
 
 def adicional_molho(pedido):
     if pedido.interacao == "Automatico":
@@ -239,10 +221,7 @@ def adicional_molho(pedido):
     elif not pedido.molho_adicional in ["Maionese", "Ketchup", "Mostarda"]:
         clear()
         print("Molho adicional inválido\n\n")
-        if pedido.interacao == "Automatico":
-            return escolher_interacao(pedido)
-        else:
-            return estado_inicial(pedido)
+        return escolher_interacao(pedido)
     
     else :
         clear()
@@ -268,10 +247,7 @@ def qual_bebida(pedido):
     elif not pedido.bebida in ["Refrigerante", "Suco", "Água"]:
         clear()
         print("Bebida inválida")
-        if pedido.interacao == "Automatico":
-            return escolher_interacao(pedido)
-        else:
-            return estado_inicial(pedido)
+        return escolher_interacao(pedido)
     
     else:
         clear()
@@ -305,10 +281,7 @@ def confirmacao_pedido(pedido):
     else:
         clear()
         print("Opção inválida\n\n")
-        if pedido.interacao == "Automatico":
-            return escolher_interacao(pedido)
-        else:
-            return estado_inicial(pedido)
+        return escolher_interacao(pedido)
 
 def entrega(pedido):
     if pedido.interacao == "Automatico":
@@ -329,10 +302,7 @@ def entrega(pedido):
     if not pedido.forma_entrega in ["Retirar no balcão", "Entrega"]:
         clear()
         print("Opção inválida\n\n")
-        if pedido.interacao == "Automatico":
-            return escolher_interacao(pedido)
-        else:
-            return estado_inicial(pedido)
+        return escolher_interacao(pedido)
     
     else:
         clear()
@@ -381,10 +351,7 @@ def senha_cartao(pedido):
             tentativas += 1
         clear()
         print("Número de tentativas excedido")
-        if pedido.interacao == "Automatico":
-            return escolher_interacao(pedido)
-        else:
-            return estado_inicial(pedido)
+        return escolher_interacao(pedido)
 
 def imprime(pedido):
     print("==========================================")
