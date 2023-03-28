@@ -236,7 +236,7 @@ def qual_bebida(pedido):
         print("Escolha a bebida do seu sanduíche:\n")
         print("Refrigerante")
         print("Suco")
-        print("Água")
+        print("Agua")
         print("\nVoltar")
         pedido.bebida = input("Digite a bebida: ")
     
@@ -244,7 +244,7 @@ def qual_bebida(pedido):
         clear()
         return qual_molho(pedido)
     
-    elif not pedido.bebida in ["Refrigerante", "Suco", "Água"]:
+    elif not pedido.bebida in ["Refrigerante", "Suco", "Agua"]:
         clear()
         print("Bebida inválida")
         return escolher_interacao(pedido)
@@ -299,7 +299,7 @@ def entrega(pedido):
         clear()
         return confirmacao_pedido(pedido)    
     
-    if not pedido.forma_entrega in ["Retirar no balcão", "Entrega"]:
+    if not pedido.forma_entrega in ["Retirar no balcao", "Entrega"]:
         clear()
         print("Opção inválida\n\n")
         return escolher_interacao(pedido)
