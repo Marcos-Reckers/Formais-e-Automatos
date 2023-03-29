@@ -280,7 +280,7 @@ def confirmacao_pedido(pedido):
     
     else:
         clear()
-        print("Opção inválida\n\n")
+        print("Opção de adição de pedido inválida\n\n")
         return escolher_interacao(pedido)
 
 def entrega(pedido):
@@ -301,7 +301,7 @@ def entrega(pedido):
     
     if not pedido.forma_entrega in ["Retirar no balcao", "Entrega"]:
         clear()
-        print("Opção inválida\n\n")
+        print("Opção de entrega inválida\n\n")
         return escolher_interacao(pedido)
     
     else:
@@ -310,8 +310,13 @@ def entrega(pedido):
 
 def pagamento(pedido):
     if pedido.interacao == "Automatico":
-        pedido.cartao = pedido.entradas_arquivo[pedido.indice]
-        pedido.indice = pedido.indice + 1
+        if pedido.indice < len(pedido.entradas_arquivo):
+            pedido.cartao = pedido.entradas_arquivo[pedido.indice]
+            pedido.indice = pedido.indice + 1
+        
+        else :
+            print("Número de cartão inválido\n\n")
+            return escolher_interacao(pedido)
     
     else:
         pedido.cartao = input("Digite o número do cartão: ")
@@ -335,7 +340,6 @@ def senha_cartao(pedido):
     
     else:
         senha = input("Digite a senha do cartão: ")
-        
     
     if senha == pedido.senha_cartao:
         clear()
@@ -343,28 +347,37 @@ def senha_cartao(pedido):
     
     else:
         tentativas = 0
-        while (senha != pedido.senha_cartao or tentativas < 3):
-            print("Senha inválida")
-            senha = input("Digite a senha do cartão: ")
+        while (senha != pedido.senha_cartao and tentativas < 4):
+            if pedido.interacao == "Automatico":
+                if pedido.indice < len(pedido.entradas_arquivo):
+                    pedido.cartao = pedido.entradas_arquivo[pedido.indice]
+                    pedido.indice = pedido.indice + 1
+            
+            else:
+                print("Senha inválida tente novamente\n")
+                senha = input("Digite a senha do cartão: ")
+
             if senha == pedido.senha_cartao:
                 return imprime(pedido)
             tentativas += 1
         clear()
-        print("Número de tentativas excedido")
+        print("Número de tentativas de senha excedido\n\n")
         return escolher_interacao(pedido)
 
 def imprime(pedido):
-    print("==========================================")
-    print("Obrigado por utilizar o sistema de pedidos")
-    print("==========================================\n")
+    print("=======================================================")
+    print("=========== Pedido realizado com sucesso!! ============")
+    print("====== Obrigado por utilizar o sistema de pedidos======")
+    print("=======================================================\n")
+    
+    return main()
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def main():
-    
+    #clear()
     meupedido = Pedido()
-    clear()
     escolher_interacao(meupedido)
     print(meupedido)
 
