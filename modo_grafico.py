@@ -10,11 +10,18 @@ def escolher_interacao(pedido):
     pedido.interacao = popup("Qual o modo de interação?", ["Manual", "Automatico"]) 
     
     if pedido.interacao == "Automatico":
-        with open(seleciona_arquivo(), "r") as arquivo:
-            for line in arquivo.readlines():
-                pedido.entradas_arquivo.append(line.strip())
-        return estado_inicial(pedido)
-    
+        arquivo = seleciona_arquivo()
+        if arquivo != "" and arquivo != None:
+            with open(arquivo, "r") as arquivo:
+                for line in arquivo.readlines():
+                    pedido.entradas_arquivo.append(line.strip())
+            
+            return estado_inicial(pedido)
+        
+        else:
+            popup_notification("Erro", "Arquivo inválido para interação automática")
+            return main()
+
     elif pedido.interacao == "Manual":
         return estado_inicial(pedido)
 

@@ -11,7 +11,7 @@ def seleciona_arquivo():
         [sg.Button('Go'), sg.Button('Exit')]
     ]
     
-    event, values = sg.Window('Insira o caminho para o seu arquivo', layout, icon= icone, size = (500,100), resizable= True).read(close=True)
+    event, values = sg.Window('Insira o caminho para o seu arquivo', layout, icon= icone, size = (680,100), resizable= True).read(close=True)
     
     if event == 'Go':
         sg.user_settings_set_entry(
