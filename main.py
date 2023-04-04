@@ -9,14 +9,14 @@ def escolher_interacao(pedido):
     
     if pedido.interacao == "Automatico":
         nome_arquivo = input("Digite o nome do arquivo: ")
-        with open(nome_arquivo, "r") as arquivo:
-            for line in arquivo.readlines():
-                pedido.entradas_arquivo.append(line.strip())
-        print(pedido.entradas_arquivo)
-        print(len(pedido.entradas_arquivo))
-        print(pedido.indice)
-        clear()
-        return estado_inicial(pedido)
+        if nome_arquivo != None and ".txt" in nome_arquivo and FileNotFoundError():
+            with open(nome_arquivo, "r") as arquivo:
+                for line in arquivo.readlines():
+                    pedido.entradas_arquivo.append(line.strip())
+            clear()
+            return estado_inicial(pedido)
+        else:
+            print("Arquivo invalido!")
     
     elif pedido.interacao == "Real":
         clear()
@@ -379,7 +379,6 @@ def main():
     #clear()
     meupedido = Pedido()
     escolher_interacao(meupedido)
-    print(meupedido)
 
 if __name__ == "__main__":
     main()
