@@ -1,4 +1,3 @@
-import os
 from lib.pedido import Pedido
 from lib.GUI import *
 
@@ -11,7 +10,7 @@ def escolher_interacao(pedido):
     
     if pedido.interacao == "Automatico":
         arquivo = seleciona_arquivo()
-        if arquivo != "" and arquivo != None:
+        if arquivo != None and ".txt" in arquivo and FileNotFoundError == False:
             with open(arquivo, "r") as arquivo:
                 for line in arquivo.readlines():
                     pedido.entradas_arquivo.append(line.strip())
@@ -30,6 +29,7 @@ def escolher_interacao(pedido):
 # Neste estado, o usuário deve digitar seu nome de usuário
 # Qualquer conjunto de caracteres é aceito como nome de usuário exeto valores vazios
 # Caso o usuário digite um nome de usuário inválido, uma mensagem de erro é exibida
+# Para testar o estado de erro, basta digitar um nome de usuário vazio ou fechar a janela de digitação de nome de usuário
 def estado_inicial(pedido):
     if pedido.interacao == "Automatico":
         pedido.usuario = pedido.entradas_arquivo[pedido.indice]
@@ -48,6 +48,7 @@ def estado_inicial(pedido):
 # Neste estado, o usuário deve digitar sua senha
 # Qualquer conjunto de caracteres é aceito como senha exeto valores vazios
 # Caso o usuário digite uma senha inválida, uma mensagem de erro é exibida
+# Para testar o estado de erro, basta digitar uma senha vazia ou fechar a janela de digitação de senha
 def senha_inicial(pedido):
     if pedido.interacao == "Automatico":
         pedido.senha = pedido.entradas_arquivo[pedido.indice]
@@ -317,7 +318,6 @@ def entrega(pedido):
         return main()
     
     else:
-        clear()
         return pagamento(pedido)
 
 
@@ -408,12 +408,6 @@ def imprime(pedido):
     popup_notification("Pedido", "Pedido realizado com sucesso!!!")
     
     return main()
-
-
-# Função utilizada para limpar o terminal (console) utilizada principalmente no modo texto da aplicação
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
 
 # Função de inicialização da aplicação e criação do objeto pedido
 def main():

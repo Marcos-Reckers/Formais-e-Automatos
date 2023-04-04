@@ -7,8 +7,8 @@ def seleciona_arquivo():
     layout = [
         [sg.Text('Caminho para seu arquivo')],
         [sg.Combo(sg.user_settings_get_entry('-filenames-', []), default_value=sg.user_settings_get_entry(
-            '-last filename-', ''), size=(80, 1), key='-FILENAME-'), sg.FileBrowse()],
-        [sg.Button('Go'), sg.Button('Exit')]
+            '-last filename-', ''), size=(80, 1), key='-FILENAME-'), sg.FileBrowse(button_text='Procurar')],
+        [sg.Button('Avançar', key='Go')]
     ]
     
     event, values = sg.Window('Insira o caminho para o seu arquivo', layout, icon= icone, size = (680,100), resizable= True).read(close=True)
