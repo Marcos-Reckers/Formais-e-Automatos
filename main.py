@@ -34,7 +34,7 @@ def escolher_interacao(pedido):
     
 # Função equivalente ao estado inicial do automato (q0)
 # Neste estado, o usuário deve digitar seu nome de usuário
-# Qualquer conjunto de caracteres é aceito como nome de usuário exceto valores vazios
+# Qualquer conjunto de caracteres é aceito como nome de usuário exceto entrada vazia
 # Caso o usuário digite um nome de usuário inválido, uma mensagem de erro é exibida
 # Para testar o estado de erro, basta digitar um nome de usuário vazio
 def estado_inicial(pedido):
@@ -55,7 +55,7 @@ def estado_inicial(pedido):
 
 # Função equivalente ao segundo estado do automato (q1)
 # Neste estado, o usuário deve digitar sua senha
-# Qualquer conjunto de caracteres é aceito como senha exeto valores vazios
+# Qualquer conjunto de caracteres é aceito como senha exceto entrada
 # Caso o usuário digite uma senha inválida, uma mensagem de erro é exibida
 # Para testar o estado de erro, basta digitar uma senha vazia
 def senha_inicial(pedido):
@@ -75,6 +75,7 @@ def senha_inicial(pedido):
 # Função equivalente ao terceiro estado do automato (q2)
 # Neste estado, o usuário deve escolher o recheio do sanduíche
 # Os recheios disponíveis são: Frango, Carne, Vegetariano
+# O usuário deve digitar o recheio exatamente como proposto pelo sistema
 # Caso o usuário digite um recheio inválido, uma mensagem de erro é exibida
 # Caso o usuário digite voltar, o estado inicial é chamado novamente
 def qual_recheio(pedido):
@@ -105,6 +106,8 @@ def qual_recheio(pedido):
     
 # Função equivalente ao quarto estado do automato (q3)
 # Neste estado, o usuário deve escolher se deseja adicionar um recheio adicional
+# As opções disponíveis são: Sim, Não
+# O usuário deve digitar a resposta exatamente como proposto pelo sistema
 # Caso o usuário escolha sim, o estado de adicionar recheio adicional (q4) é chamado
 # Caso o usuário escolha não, o estado de escolher salada (q5) é chamado
 # Caso o usuário escolha uma opção inválida, uma mensagem de erro é exibida
@@ -136,6 +139,7 @@ def adicional1(pedido):
 # Função equivalente ao quinto estado do automato (q4)
 # Neste estado, o usuário deve escolher o recheio adicional do sanduíche
 # Os recheios disponíveis são: Frango, Carne, Vegetariano
+# O usuário deve digitar o recheio exatamente como proposto pelo sistema
 # Caso o usuário escolha um recheio inválido, uma mensagem de erro é exibida
 # Caso o usuário escolha "Cancelar adicional", o estado de escolher salada (q5) é chamado
 def adicional_recheio(pedido):
@@ -167,6 +171,7 @@ def adicional_recheio(pedido):
 # Função equivalente ao sexto estado do automato (q5)
 # Neste estado, o usuário deve escolher a salada do sanduíche
 # As saladas disponíveis são: Alface, Tomate, Cenoura, Sem salada
+# O usuário deve digitar a salada exatamente como proposto pelo sistema
 # Caso o usuário escolha uma salada inválida, uma mensagem de erro é exibida
 # Caso o usuário escolha voltar, o estado de escolher recheio (q2) é chamado
 def qual_salada(pedido):
@@ -199,6 +204,7 @@ def qual_salada(pedido):
 # Função equivalente ao sétimo estado do automato (q6)
 # Neste estado, o usuário deve escolher o molho do sanduíche
 # Os molhos disponíveis são: Maionese, Ketchup, Mostarda, Sem molho
+# O usuário deve digitar o molho exatamente como proposto pelo sistema
 # Caso o usuário escolha um molho inválido, uma mensagem de erro é exibida
 # Caso o usuário escolha voltar, o estado de escolher salada (q5) é chamado
 def qual_molho(pedido):
@@ -231,6 +237,7 @@ def qual_molho(pedido):
 # Função equivalente ao oitavo estado do automato (q7)
 # Neste estado, o usuário deve escolher se deseja adicionar um molho adicional ao sanduíche
 # As opções disponíveis são: Sim, Não
+# O usuário deve digitar a resposta exatamente como proposto pelo sistema
 # Caso escolha "Sim", o estado de escolher molho adicional (q8) é chamado
 # Caso escolha "Não", o estado de escolher bebida (q9) é chamado
 # Caso o usuário escolha uma opção inválida, uma mensagem de erro é exibida
@@ -261,6 +268,7 @@ def adicional2(pedido):
 # Função equivalente ao nono estado do automato (q8)
 # Neste estado, o usuário deve escolher o molho adicional do sanduíche
 # Os molhos disponíveis são: Maionese, Ketchup, Mostarda
+# O usuário deve digitar o molho exatamente como proposto pelo sistema
 # Caso o usuário escolha um molho adicional inválido, uma mensagem de erro é exibida
 # Caso o usuário escolha "Cancelar adicional", o estado de escolher bebida (q9) é chamado
 def adicional_molho(pedido):
@@ -292,6 +300,7 @@ def adicional_molho(pedido):
 # Função equivalente ao décimo estado do automato (q9)
 # Neste estado, o usuário deve escolher a bebida que acompanha sanduíche
 # As bebidas disponíveis são: Refrigerante, Suco, Agua
+# O usuário deve digitar a bebida exatamente como proposto pelo sistema
 # Caso o usuário escolha uma bebida inválida, uma mensagem de erro é exibida
 # Caso o usuário escolha voltar, o estado de escolher molho adicional (q8) é chamado
 def qual_bebida(pedido):
@@ -323,6 +332,7 @@ def qual_bebida(pedido):
 # Função equivalente ao décimo primeiro estado do automato (q10)
 # Neste estado, o usuário deve escolher se deseja adicionar mais algum lanche ao seu pedido
 # As opções disponíveis são: Sim, Não, Voltar a editar o pedido
+# O usuário deve digitarsua opção exatamente como proposto pelo sistema
 # Caso escolha "Sim", o estado de escolher recheio (q2) é chamado
 # Caso escolha "Não", o estado de escolher forma de entrega (q11) é chamado
 # Caso escolha "Voltar a editar o pedido", o estado de escolher molho (q7) é chamado
@@ -361,6 +371,7 @@ def confirmacao_pedido(pedido):
 # Função equivalente ao décimo segundo estado do automato (q11)
 # Neste estado, o usuário deve escolher a forma de entrega do seu pedido
 # As formas de entrega disponíveis são: Retirar no balcão, Entrega
+# O usuário deve digitar sua opção exatamente como proposto pelo sistema
 # Caso o usuário escolha uma forma de entrega inválida, uma mensagem de erro é exibida
 # Caso o usuário escolha voltar, o estado de escolher forma de entrega (q10) é chamado
 def entrega(pedido):
