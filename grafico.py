@@ -345,7 +345,7 @@ def pagamento(pedido):
     else:
         pedido.cartao = popup_text('Cartão de Crédito' ,"Digite o número do cartão: ")
     
-    if pedido.cartao != None or pedido.cartao != "" or len(pedido.cartao) != 16:
+    if pedido.cartao == None or pedido.cartao == "" or len(pedido.cartao) != 16:
         if pedido.interacao == "Automatico":
             if not pedido.cartao_error:
                 pedido.cartao_error = True
