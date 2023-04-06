@@ -10,7 +10,7 @@ def escolher_interacao(pedido):
     
     if pedido.interacao == "Automatico":
         arquivo = seleciona_arquivo()
-        if arquivo != None and ".txt" in arquivo and FileNotFoundError == False:
+        if arquivo != None and ".txt" in arquivo:
             with open(arquivo, "r") as arquivo:
                 for line in arquivo.readlines():
                     pedido.entradas_arquivo.append(line.strip())
@@ -344,20 +344,21 @@ def pagamento(pedido):
     
     else:
         pedido.cartao = popup_text('Cartão de Crédito' ,"Digite o número do cartão: ")
-    
-    if len(pedido.cartao) != 16:
-        if pedido.interacao == "Automatico":
-            if not pedido.cartao_error:
-                pedido.cartao_error = True
-                popup_notification("Cartão", "Número de cartão inválido!!!")
-                return pagamento(pedido)
-            
-            else:
-                return pagamento(pedido)
+    #TODO recebe None fazer um if aqui
+    if pedido.cartao != None:
+        if len(pedido.cartao) != 16:
+            if pedido.interacao == "Automatico":
+                if not pedido.cartao_error:
+                    pedido.cartao_error = True
+                    popup_notification("Cartão", "Número de cartão inválido!!!")
+                    return pagamento(pedido)
+                
+                else:
+                    return pagamento(pedido)
 
-        else:
-            popup_notification("Cartão", "Quantidade de dígitos inválida!!!")
-            return pagamento(pedido)
+    else:
+        popup_notification("Cartão", "Quantidade de dígitos inválida!!!")
+        return pagamento(pedido)
     
     else:
         pedido.senha_cartao = pedido.cartao[-4:]
