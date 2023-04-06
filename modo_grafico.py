@@ -344,21 +344,20 @@ def pagamento(pedido):
     
     else:
         pedido.cartao = popup_text('Cartão de Crédito' ,"Digite o número do cartão: ")
-    #TODO recebe None fazer um if aqui
-    if pedido.cartao != None:
-        if len(pedido.cartao) != 16:
-            if pedido.interacao == "Automatico":
-                if not pedido.cartao_error:
-                    pedido.cartao_error = True
-                    popup_notification("Cartão", "Número de cartão inválido!!!")
-                    return pagamento(pedido)
-                
-                else:
-                    return pagamento(pedido)
-
-    else:
-        popup_notification("Cartão", "Quantidade de dígitos inválida!!!")
-        return pagamento(pedido)
+    
+    if pedido.cartao != None or pedido.cartao != "" or len(pedido.cartao) != 16:
+        if pedido.interacao == "Automatico":
+            if not pedido.cartao_error:
+                pedido.cartao_error = True
+                popup_notification("Cartão", "Número de cartão inválido!!!")
+                return pagamento(pedido)
+            
+            else:
+                return pagamento(pedido)
+        
+        else:
+            popup_notification("Cartão", "Número de cartão inválido!!!")
+            return pagamento(pedido)
     
     else:
         pedido.senha_cartao = pedido.cartao[-4:]
