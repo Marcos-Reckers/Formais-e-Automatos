@@ -76,7 +76,7 @@ def qual_recheio(pedido):
     
     else:
         pedido.recheio = popup("Escolha o recheio do seu sanduíche:", ["Frango", "Carne", "Vegetariano", "Voltar"], True)
-
+    
     
     if pedido.recheio == "Voltar":
         return estado_inicial(pedido)
